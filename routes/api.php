@@ -17,19 +17,19 @@ use App\Http\Controllers\UserController;
 */
 
 // Post
-Route::get('/students', [PostController::class, 'index']);
-Route::get('/students/{id}', [PostController::class, 'show']);
+Route::get('/posts', [PostController::class, 'index']);
+Route::get('/posts/{id}', [PostController::class, 'show']);
 
 // User
-Route::post('/users', [UserController::class, 'register']);
-Route::post('/users', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [UserController::class, 'login']);
 
 Route::group(['middleware' => ['auth:sanctum']], function() {
     // Post
-    Route::post('/students', [PostController::class, 'store']);
-    Route::delete('/students/{id}', [PostController::class, 'destroy']);
-    Route::put('/students/{id}', [PostController::class, 'update']);
+    Route::post('/posts', [PostController::class, 'store']);
+    Route::delete('/posts/{id}', [PostController::class, 'destroy']);
+    Route::put('/posts/{id}', [PostController::class, 'update']);
 
     // User
-    Route::post('/users', [UserController::class, 'logout']);
+    Route::post('/logout', [UserController::class, 'logout']);
 });
